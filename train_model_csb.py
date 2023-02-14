@@ -250,6 +250,7 @@ def read_seg_dataset_multiclass_segformer(example):
         * image [tensor array]
         * class_label [tensor array]
     """
+
     image, label = tf.py_function(func=load_npz, inp=[example], Tout=[tf.float32, tf.uint8])
 
     imdim = image.shape[0]
@@ -258,6 +259,7 @@ def read_seg_dataset_multiclass_segformer(example):
         image = tf.concat([image, image, image], axis=2)
 
     image = tf.transpose(image, (2, 0, 1))
+
     if N_DATA_BANDS==1:
         image.set_shape([3, imdim, imdim])
     else:
@@ -580,7 +582,6 @@ else:
     train_ds = train_ds.map(read_seg_dataset_multiclass, num_parallel_calls=AUTO)
     val_ds = val_ds.map(read_seg_dataset_multiclass, num_parallel_calls=AUTO)
 
-
 train_ds = train_ds.repeat()
 train_ds = train_ds.batch(BATCH_SIZE, drop_remainder=True) # drop_remainder will be needed on TPU (and possible with distributed gpus)
 train_ds = train_ds.prefetch(AUTO) #
@@ -650,7 +651,6 @@ if do_viz == True:
                 #plt.show()
                 plt.savefig('example-{}-{}.png'.format(counter,count), dpi=200)
                 plt.close()
-
 
 ##===============================================
 
