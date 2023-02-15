@@ -258,11 +258,19 @@ def read_seg_dataset_multiclass_segformer(example):
         image = tf.concat([image, image, image], axis=2)
 
     image = tf.transpose(image, (2, 0, 1))
+<<<<<<< HEAD
+=======
+
+>>>>>>> be26439e1245f78dfd56dd981d5e362829ed22da
     if N_DATA_BANDS==1:
         image.set_shape([3, imdim, imdim])
     else:
         image.set_shape([N_DATA_BANDS, imdim, imdim])
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> be26439e1245f78dfd56dd981d5e362829ed22da
     label.set_shape([imdim, imdim])
 
     label = tf.squeeze(tf.argmax(tf.squeeze(label),-1))
