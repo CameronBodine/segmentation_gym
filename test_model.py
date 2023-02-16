@@ -506,6 +506,7 @@ def do_seg_csb(f, M, metadatadict, MODEL, outDir, NCLASSES, N_DATA_BANDS, TARGET
     Kc.append(kld)
 
     metrics_table = {}
+    metrics_table['Dataset_Path'] = f
     metrics_table['Dataset'] = fname
     metrics_table['OverallAccuracy'] = np.array(OA)
     metrics_table['Frequency_Weighted_Intersection_over_Union'] = np.array(FWIOU)
@@ -515,6 +516,7 @@ def do_seg_csb(f, M, metadatadict, MODEL, outDir, NCLASSES, N_DATA_BANDS, TARGET
     df_out1 = pd.DataFrame.from_dict(metrics_table)
 
     metrics_per_class = {}
+    metrics_per_class['Dataset_Path'] = f
     metrics_per_class['Dataset'] = fname
     for k in range(NCLASSES):
         metrics_per_class['F1Score_class{}'.format(k)] = np.array(F1)[:,k]
