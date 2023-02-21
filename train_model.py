@@ -310,6 +310,7 @@ def plotcomp_n_metrics(ds,model,NCLASSES, DOPLOT, test_samples_fig, subset,MODEL
 
                 out = AllMetrics(NCLASSES, imgPredict, lbl)
 
+
                 OA.append(out['OverallAccuracy'])
                 FWIOU.append(out['Frequency_Weighted_Intersection_over_Union'])
                 MIOU.append(out['MeanIntersectionOverUnion'])
@@ -847,7 +848,6 @@ if MODEL!='segformer':
                 class_weights = np.ones(NCLASSES)
 
                 model.compile(optimizer = 'adam', loss =weighted_dice_coef_loss(NCLASSES,class_weights), metrics = [iou_multi(NCLASSES), dice_multi(NCLASSES)])
-
         else:
                 model.compile(optimizer = 'adam', loss =dice_coef_loss(NCLASSES), metrics = [iou_multi(NCLASSES), dice_multi(NCLASSES)])
 
@@ -975,3 +975,4 @@ print('Mean of mean frequency weighted IoUs, confusion matrix (train subset)={me
 print('Mean of Matthews Correlation Coefficients (train subset)={mean_dice:0.3f}'.format(mean_dice=np.mean(MCC)))
 print('Mean of mean Dice scores (train subset)={mean_dice:0.3f}'.format(mean_dice=np.mean(Dc)))
 print('Mean of mean KLD scores (train subset)={mean_kld:0.3f}'.format(mean_kld=np.mean(Kc)))
+
