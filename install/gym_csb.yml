@@ -1,0 +1,21 @@
+name: gym
+channels:
+  - conda-forge
+  - nvidia
+  - defaults
+dependencies:
+ - python<3.13
+ - scipy
+ - numpy
+ - scikit-image
+ - ipython
+ - joblib
+ - tqdm
+ - pandas
+ - pip
+ - natsort
+ - matplotlib
+ - pip:
+    - doodleverse_utils
+    - transformers
+    - tensorflow[and-cuda]

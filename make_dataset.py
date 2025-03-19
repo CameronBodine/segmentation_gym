@@ -45,17 +45,20 @@ random.seed(0)
 ## USER INPUTS
 ##========================================================
 
-root = Tk()
-root.filename =  filedialog.askdirectory(initialdir = os.getcwd(),title = "Select directory for OUTPUT files")
-output_data_path = root.filename
-print(output_data_path)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askdirectory(initialdir = os.getcwd(),title = "Select directory for OUTPUT files")
+# output_data_path = root.filename
+# print(output_data_path)
+# root.withdraw()
 
-root = Tk()
-root.filename =  filedialog.askopenfilename(initialdir = output_data_path,title = "Select config file",filetypes = (("config files","*.json"),("all files","*.*")))
-configfile = root.filename
-print(configfile)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askopenfilename(initialdir = output_data_path,title = "Select config file",filetypes = (("config files","*.json"),("all files","*.*")))
+# configfile = root.filename
+# print(configfile)
+# root.withdraw()
+
+output_data_path = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/seg_gym/20250317_test'
+configfile = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/seg_gym/20250317_test/config/20250317_brush_creek_18m_18m.json'
 
 with open(configfile) as f:
     config = json.load(f)
@@ -138,17 +141,20 @@ if USE_MULTI_GPU:
 ### get data files
 ###===============================================
 
-root = Tk()
-root.filename =  filedialog.askdirectory(initialdir = output_data_path,title = "Select directory of LABEL files")
-label_data_path = root.filename
-print(label_data_path)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askdirectory(initialdir = output_data_path,title = "Select directory of LABEL files")
+# label_data_path = root.filename
+# print(label_data_path)
+# root.withdraw()
 
-root = Tk()
-root.filename =  filedialog.askdirectory(initialdir = label_data_path,title = "Select FIRST directory of IMAGE files")
-data_path = root.filename
-print(data_path)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askdirectory(initialdir = label_data_path,title = "Select FIRST directory of IMAGE files")
+# data_path = root.filename
+# print(data_path)
+# root.withdraw()
+
+label_data_path = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/Img-Lbl/18_18/labels'
+data_path = label_data_path.replace('labels', 'images')
 
 W=[]
 W.append(data_path)

@@ -35,28 +35,32 @@ from skimage.transform import resize
 ## VARIABLES
 ###############################################################
 
-root = Tk()
-root.filename =  filedialog.askdirectory(initialdir = "./",title = "Select directory of TRAIN data files")
-data_path = root.filename
-print(data_path)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askdirectory(initialdir = "./",title = "Select directory of TRAIN data files")
+# data_path = root.filename
+# print(data_path)
+# root.withdraw()
 
-root = Tk()
-root.filename =  filedialog.askdirectory(initialdir = data_path,title = "Select directory of VALIDATION data files")
-val_data_path = root.filename
-print(val_data_path)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askdirectory(initialdir = data_path,title = "Select directory of VALIDATION data files")
+# val_data_path = root.filename
+# print(val_data_path)
+# root.withdraw()
 
-root = Tk()
-root.filename =  filedialog.askopenfilename(initialdir = data_path,title = "Select config file",filetypes = (("config files","*.json"),("all files","*.*")))
-configfile = root.filename
-print(configfile)
-root.withdraw()
+# root = Tk()
+# root.filename =  filedialog.askopenfilename(initialdir = data_path,title = "Select config file",filetypes = (("config files","*.json"),("all files","*.*")))
+# configfile = root.filename
+# print(configfile)
+# root.withdraw()
+
+data_path = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/seg_gym/20250317_test/train_data/train_npzs'
+val_data_path = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/seg_gym/20250317_test/val_data/val_npzs'
+configfile = r'/mnt/d/scratch/202503_BrushyCreek_Substrate/seg_gym/20250317_test/config/20250317_brush_creek_18m_18m.json'
 
 configfile = os.path.normpath(configfile)
 data_path = os.path.normpath(data_path)
 
-weights = configfile.replace('.json','.h5').replace('config', 'weights')
+weights = configfile.replace('.json','.weights.h5').replace('config', 'weights')
 
 try:
     os.mkdir(os.path.dirname(weights))
