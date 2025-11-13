@@ -4,10 +4,12 @@ channels:
   - nvidia
   - defaults
 dependencies:
- - python<3.13
+ - python=3.10
  - scipy
- - numpy
+ - numpy=1.24.*
  - scikit-image
+ - cuda=11.8
+ - cudatoolkit=11.8.0
  - ipython
  - joblib
  - tqdm
@@ -17,5 +19,6 @@ dependencies:
  - matplotlib
  - pip:
     - doodleverse_utils
-    - transformers
-    - tensorflow[and-cuda]
+    - transformers==4.37.*
+    - nvidia-cudnn-cu11==8.6.0.163
+    - tensorflow==2.12.*
